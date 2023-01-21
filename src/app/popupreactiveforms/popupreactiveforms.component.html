@@ -1,0 +1,82 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Create New Record</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="empform" (ngSubmit)="SaveEmployee()">
+      <div class="mb-3">
+        <label>Emp Id</label>
+        <div class="input-group">
+          <input name="codeid" class="form-control" formControlName="codeid" />
+        </div>
+      </div>
+      <div class="mb-3">
+        <label>Emp Name</label>
+        <div class="input-group">
+          <input
+            name="empname"
+            class="form-control"
+            formControlName="empname"
+          />
+        </div>
+        <span style="color:red" *ngIf="empname && empname.invalid">Enter Valid Name</span>
+      </div>
+      <div class="mb-3">
+        <label>Emp Designation</label>
+        <div class="input-group">
+          <input
+            name="designation"
+            class="form-control"
+            formControlName="designation"
+          />
+        </div>
+        <span style="color:red" *ngIf="designation && designation.invalid">Enter Valid Designation</span>
+      </div>
+      <div class="mb-3">
+        <label>Emp Department</label>
+        <div class="input-group">
+          <input
+            name="department"
+            class="form-control"
+            formControlName="department"
+          />
+        </div>
+        <span style="color:red" *ngIf="department && department.invalid">Enter Valid Department</span>
+      </div>
+      <!-- <div class="mb-3">
+        <label>Emp Email</label>
+        <div class="input-group">
+          <input name="email" class="form-control" formControlName="email" />
+        </div>
+      </div> -->
+
+      <div class="mb-3">
+        <button type="submit" class="btn btn-primary">
+          Save
+        </button>
+      </div>
+
+      <span [ngClass]='errorclass'>{{errormessage}}</span>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="modal.close('Save click')"
+    >
+      Close
+    </button>
+  </div>
+</ng-template>
+
+<button class="btn btn-md btn-primary" (click)="open()" style="margin:20px;">
+  Add New
+</button>
+<hr />

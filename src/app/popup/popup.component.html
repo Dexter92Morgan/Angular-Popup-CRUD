@@ -1,0 +1,121 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Create New Record</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <!-- Norma Popup -->
+    <!-- <form>
+      <div class="mb-3">
+        <label for="dateOfBirth">Name</label>
+        <div class="input-group">
+          <input id="name" class="form-control" />
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="dateOfBirth">Country</label>
+        <div class="input-group">
+          <select class="form-control">
+
+            <option>India</option>
+            <option>USA</option>
+          </select>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="dateOfBirth">Date of birth</label>
+        <div class="input-group">
+          <input
+            id="dateOfBirth"
+            class="form-control"
+            placeholder="yyyy-mm-dd"
+            name="dp"
+            ngbDatepicker
+            #dp="ngbDatepicker"
+          />
+          <button
+            class="btn btn-outline-secondary bi bi-calendar3"
+            (click)="dp.toggle()"
+            type="button"
+          ></button>
+        </div>
+      </div>
+      <div><ngb-alert type="success" >Saved Successfully</ngb-alert>
+              </div>
+    </form> -->
+
+    <!-- Template Driver Forms -->
+
+    <form #empform="ngForm" (submit)="SaveEmployee(empform.value)">
+      <div class="mb-3">
+        <label>Emp Id</label>
+        <div class="input-group">
+          <input name="codeid" disabled class="form-control" #codeid="ngModel" ngModel />
+        </div>
+        <span style="color:red" *ngIf="codeid.invalid">Enter Valid Id</span>
+      </div>
+      <div class="mb-3">
+        <label>Emp Name</label>
+        <div class="input-group">
+          <input name="empname" minlength="5" required class="form-control" #empname="ngModel" ngModel />
+        </div>
+        <span style="color:red" *ngIf="empname.invalid">Enter Valid Name</span>
+      </div>
+      <div class="mb-3">
+        <label>Designation</label>
+        <div class="input-group">
+          <input
+            name="designation"
+            class="form-control"
+            #designation="ngModel"
+            required
+            ngModel
+          />
+        </div>
+        <span style="color:red" *ngIf="designation.invalid && designation.touched">Enter Valid Designation</span>
+      </div>
+      <div class="mb-3">
+        <label>Department</label>
+        <div class="input-group">
+          <input
+            name="department"
+            class="form-control"
+            #department="ngModel"
+            required
+            ngModel
+          />
+        </div>
+      </div>
+      <div class="mb-3">
+          <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="empform.invalid"
+      >
+        Save
+      </button>
+      </div>
+    </form>
+  </div>
+  <!-- <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="modal.close('Save click')"
+    >
+      Save
+    </button>
+  </div> -->
+</ng-template>
+
+<button class="btn btn-md btn-primary" (click)="open(content)" style="margin:20px;">Add New</button>
+
+<hr />
+
+<pre>{{ closeResult }}</pre>
+<hr />

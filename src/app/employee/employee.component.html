@@ -1,0 +1,21 @@
+<div class="container">
+        <table style="width:80%; text-align: center" class="table table-bordered">
+          <thead>
+            <th>Employee Id</th>
+            <th>Employee Name</th>
+            <th>Designation</th>
+            <th>Department</th>
+            <th>Action</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of empdata">
+              <td>{{ item.empId }}</td>
+              <td>{{ item.empName }}</td>
+              <td>{{ item.designation }}</td>
+              <td>{{ item.department }}</td>
+              <!-- <td><a routerLink="Edit/{{item.empId}}" class="btn btn-primary" >Edit</a></td> -->
+              <td><a class="btn btn-primary" (click)="functionedit(item.empId)">Edit</a>|<a class="btn btn-danger" (click)="functiondelete(item.empId)">Delete</a> </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
